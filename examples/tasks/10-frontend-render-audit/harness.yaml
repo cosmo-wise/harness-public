@@ -1,0 +1,77 @@
+## Public example: explicit render audit
+## Run command: harness run -c examples/tasks/10-frontend-render-audit/harness.yaml --working-dir ./output/10-frontend-render-audit
+
+task: |
+  Build a small but polished Vite + React + TypeScript landing page for a fictional developer tool named "PulseBoard".
+
+  Requirements:
+
+  1. Scaffold:
+     - Use Vite + React + TypeScript
+     - package.json must include build and preview scripts compatible with Vite
+
+  2. Page structure:
+     - Hero section with headline, supporting copy, and primary CTA
+     - Features section with exactly 3 cards
+     - Responsive stats / social-proof strip
+     - Footer with product name and navigation links
+     - Use real section ids for any in-page navigation targets
+
+  3. Visual requirements:
+     - Strong visual hierarchy, not default browser styling
+     - Mobile layout must remain readable and non-overlapping
+     - Use a clear visual system: spacing scale, color palette, and typography choices must feel intentional
+     - Include at least one meaningful hover or entrance animation
+
+  4. Technical requirements:
+     - TypeScript strict mode
+     - No console errors in the final page
+     - No broken layout on a mobile viewport
+     - `npm run build` must pass
+     - The primary CTA must navigate to a real destination, preferably a real in-page section
+     - Every footer navigation link must point to a real section id for this single-page site
+     - Do not invent fictional external product, docs, or GitHub URLs just to make the footer look realistic
+     - `index.html` must include a meaningful `<meta name=\"description\" ...>` tag
+     - Replace the default Vite favicon with a small brand-appropriate favicon or inline SVG icon
+     - Do not leave the entire page in one monolithic App.tsx; extract a few presentational React components once the page has multiple sections
+     - Do NOT create your own Playwright script or custom render-audit script; Harness will perform the browser audit
+     - Do NOT start long-running preview or dev servers yourself; leave browser verification to Harness Render Audit
+
+agents:
+  planner:
+    cli: claude
+    timeout: 300000
+  generator:
+    cli: claude
+    timeout: 900000
+  evaluator:
+    cli: claude
+    timeout: 300000
+
+iterations:
+  max: 4
+  scoreThreshold: 88
+  minImprovement: 3
+
+parallel:
+  enabled: false
+  maxConcurrency: 1
+  minSprintsToParallelize: 3
+  allowConcurrentFileEdits: false
+
+renderAudit:
+  mode: always
+
+criteria:
+  - name: functionality
+    weight: 35
+    description: "Vite project builds successfully. The page renders correctly. Core sections exist and remain usable on desktop and mobile."
+  - name: code_quality
+    weight: 20
+    description: "Components and styling are readable, organized, and maintainable."
+  - name: architecture
+    weight: 15
+    description: "Page structure is modular enough for future extension."
+  - name: originality
+    weight: 30
+    description: "The landing page has a deliberate visual system and browser-verified polish, not generic template output."

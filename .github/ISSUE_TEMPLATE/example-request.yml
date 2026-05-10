@@ -1,0 +1,25 @@
+name: Example request
+description: Request a new public example, task config, or sample workflow.
+title: "[Example] "
+labels:
+  - examples
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What scenario should the new public example cover?
+    validations:
+      required: true
+  - type: textarea
+    id: expected-example
+    attributes:
+      label: Desired example shape
+      description: Describe the config, task, or workflow you want documented.
+    validations:
+      required: true
+  - type: textarea
+    id: sensitivity
+    attributes:
+      label: Sensitivity check
+      description: Confirm the example can be shared publicly without private assets.

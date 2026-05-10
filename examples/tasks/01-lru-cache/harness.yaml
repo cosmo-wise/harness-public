@@ -1,0 +1,67 @@
+## Public example: basic agent loop
+## Run command: harness run -c examples/tasks/01-lru-cache/harness.yaml --working-dir ./output/01-lru-cache
+
+task: |
+  Implement a TypeScript LRU (Least Recently Used) Cache class with the following requirements:
+
+  1. Class interface:
+     - constructor(capacity: number) — max number of entries
+     - get(key: string): unknown | undefined — returns value or undefined if not found; marks as recently used
+     - set(key: string, value: unknown): void — inserts or updates; evicts LRU entry when over capacity
+     - delete(key: string): boolean — removes entry, returns true if existed
+     - has(key: string): boolean — checks existence without changing usage order
+     - clear(): void — removes all entries
+     - get size(): number — current entry count
+
+  2. Eviction behavior: when capacity is exceeded, the least recently used entry is evicted.
+     Access order is updated on every get() and set().
+
+  3. Full test suite using vitest:
+     - Basic get/set operations
+     - Eviction when capacity is exceeded
+     - Usage order is respected (most recently used is not evicted)
+     - delete() and has() correct behavior
+     - Edge cases: capacity=1, re-setting existing key updates access order, get on missing key
+
+  4. TypeScript strict mode, no external dependencies beyond vitest.
+  5. Export the class as a named export from index.ts.
+  6. Include package.json with test script.
+
+agents:
+  planner:
+    cli: claude
+    timeout: 300000
+  generator:
+    cli: claude
+    timeout: 600000
+  evaluator:
+    cli: claude
+    timeout: 300000
+
+iterations:
+  max: 4
+  scoreThreshold: 85
+  minImprovement: 3
+
+parallel:
+  enabled: false
+  maxConcurrency: 1
+  minSprintsToParallelize: 3
+  allowConcurrentFileEdits: false
+
+renderAudit:
+  mode: off
+
+criteria:
+  - name: functionality
+    weight: 40
+    description: "All tests pass. get/set/delete/has/clear/size work correctly. LRU eviction order is correct."
+  - name: code_quality
+    weight: 30
+    description: "Readable implementation, good TypeScript types, no unnecessary complexity."
+  - name: architecture
+    weight: 20
+    description: "Clean data structure choice (e.g. Map for O(1) access), well-structured class."
+  - name: originality
+    weight: 10
+    description: "Non-trivial implementation, not just a simple array scan."

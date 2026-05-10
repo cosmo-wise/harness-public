@@ -1,0 +1,49 @@
+# Public Harness Configuration Example
+
+agents:
+  planner:
+    cli: claude
+    timeout: 300000
+
+  generator:
+    cli: claude
+    timeout: 600000
+
+  evaluator:
+    cli: claude
+    timeout: 300000
+
+iterations:
+  max: 5
+  scoreThreshold: 85
+  minImprovement: 5
+
+criteria:
+  - name: functionality
+    weight: 30
+    description: "功能正确性 - 代码是否按照规格要求正确实现"
+
+  - name: code_quality
+    weight: 25
+    description: "代码质量 - 可读性、可维护性、注释质量"
+
+  - name: architecture
+    weight: 25
+    description: "架构设计 - 模块化程度、扩展性、设计模式使用"
+
+  - name: originality
+    weight: 20
+    description: "原创性 - 避免套路化代码，创新解决方案"
+
+recursion:
+  maxDepth: 3
+  preventNested: true
+
+parallel:
+  enabled: true
+  maxConcurrency: auto
+  minSprintsToParallelize: 3
+  allowConcurrentFileEdits: false
+
+renderAudit:
+  mode: auto
