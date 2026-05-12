@@ -1,0 +1,2 @@
+# harness-public: no standards profile needed
+# This repo is skipped by sync_standards.py because it has no inferable profile.
