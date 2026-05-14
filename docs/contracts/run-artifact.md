@@ -22,6 +22,7 @@ See `schemas/run-manifest-1.0.json` in the harness repo for the JSON Schema.
 - `running` — Run in progress
 - `suspended` — Run paused (awaiting approval)
 - `approved` — Run approved by human
+- `rejected` — Run rejected by human
 - `passed` — Run completed successfully
 - `failed` — Run completed with failures
 - `error` — Run encountered an unrecoverable error

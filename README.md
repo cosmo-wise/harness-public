@@ -38,4 +38,4 @@ harness-public/
 
 ## Publishing Note
 
-This local workspace repo is the intended source for a future public GitHub repository. The remote is intentionally not configured yet inside `repos.yaml`; wire it up when the public repository is actually created.
+The remote is configured in `repos.yaml` and the local git remote already points to `git@github.com:cosmo-wise/harness-public.git`. This is the intended public GitHub surface for Harness.
