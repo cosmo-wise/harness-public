@@ -5,7 +5,9 @@ Harness uses the Trace CLI to capture execution evidence during runs.
 ## Setup
 
 ```bash
-pip install trace
+# Trace is a Chariot workspace module, available from
+# https://github.com/cosmo-wise/trace
+# For workspace users, the module lives at repos/trace in the Chariot control repo.
 ```
 
 ## Evidence Flow
