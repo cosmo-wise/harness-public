@@ -1,0 +1,14 @@
+{
+  "description": "Redacted Harness run configuration — safe for public display",
+  "redacted": true,
+  "originalRunId": "REDACTED",
+  "config": {
+    "model": "gpt-5.4",
+    "iterations": { "max": 3, "scoreThreshold": 80 },
+    "sprints": [
+      { "name": "Setup project scaffolding", "status": "completed" },
+      { "name": "Implement core API", "status": "completed" },
+      { "name": "Add frontend dashboard", "status": "completed" }
+    ]
+  }
+}
