@@ -12,7 +12,8 @@
   <a href="#quick-start">Quick Start</a> &middot;
   <a href="https://github.com/cosmo-wise/harness-public/issues/new?labels=bug">Report Bug</a> &middot;
   <a href="https://github.com/cosmo-wise/harness-public/issues/new?labels=feature">Feature Request</a> &middot;
-  <a href="docs/ROADMAP.md">Roadmap</a>
+  <a href="docs/ROADMAP.md">Roadmap</a> &middot;
+  <a href="README-CN.md">🇨🇳 中文版</a>
 </div>
 
 ---
